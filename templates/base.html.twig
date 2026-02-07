@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
         {% endblock %}
 
+        {% include 'partials/navbar.html.twig' %}
          
 
         {% block javascripts %}
@@ -17,6 +18,7 @@
         {% endblock %}
     </head>
     <body class='p-5'>
+        
         {% block body %}{% endblock %}
     </body>
 </html>
