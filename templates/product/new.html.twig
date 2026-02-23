@@ -3,6 +3,8 @@
 {% block title %}Nouveau Livre{% endblock %}
 
 {% block body %}
+
+{% if is_granted('ROLE_ADMIN') %}
 <div class="stepper">
     <h3>Étape {{ current_step }} sur {{ total_steps }} : {{ step_label }}</h3>
 </div>
@@ -38,4 +40,8 @@
     </div>
 
 {{ form_end(form) }}
+
+{% else %}
+    <p>Vous n'avez pas les permissions nécessaires pour créer un nouveau livre.</p>
+{% endif %}
 {% endblock %}

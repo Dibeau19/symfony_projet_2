@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Client{% endblock %}
+
+{% block body %}
+    <h1>Edit Client</h1>
+
+    {% if is_granted('ROLE_MANAGER') %}
+
+    {{ include('client/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_client_index') }}">back to list</a>
+
+    {{ include('client/_delete_form.html.twig') }}
+
+    {% else %}
+        <p>Vous n'avez pas les permissions nécessaires pour éditer ce client.</p>
+    {% endif %}
+{% endblock %}

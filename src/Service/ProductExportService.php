@@ -27,9 +27,9 @@ class ProductExportService
                     $product->getName(),
                     $product->getDescription(),
                     $product->getPrice(),
-                    $product->getType(),    
-                    $product->getWeight(),  
-                    $product->getStock()    
+                    $product->getType(),
+                    $product->getWeight(),
+                    $product->getStock()
                 ], ';');
             }
             fclose($handle);

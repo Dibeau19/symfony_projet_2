@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Client{% endblock %}
+
+{% block body %}
+    <h1>Create new Client</h1>
+    {% if is_granted('ROLE_MANAGER') %}
+
+    {{ include('client/_form.html.twig') }}
+
+    <a href="{{ path('app_client_index') }}">back to list</a>
+
+    {% else %}
+        <p>Vous n'avez pas les permissions nécessaires pour créer un nouveau client.</p>
+    {% endif %}
+{% endblock %}

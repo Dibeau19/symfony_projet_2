@@ -1,0 +1,2 @@
+type,name,description,weight,price,stock
+"roman","LivreTest","Un super livre pour tester l'importation CSV",1,200,50

@@ -5,9 +5,30 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_product_index') }}">Produits</a>
+                </li>
 
+                {% if is_granted('ROLE_MANAGER') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_client_index') }}">Clients</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_index') }}">Utilisateurs</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
                 {% if app.user %}
+                    <li class="nav-item">
+                        <span class="navbar-text me-3">Bonjour, {{ app.user.userIdentifier }}</span>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ logout_path() }}">Déconnexion</a>
                     </li>
@@ -16,7 +37,6 @@
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     </li>
                 {% endif %}
-
             </ul>
         </div>
     </div>

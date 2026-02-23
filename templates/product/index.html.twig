@@ -20,6 +20,7 @@
                     <th>weight</th>
                     <th>Price</th>
                     <th class="text-center">Actions</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -30,19 +31,21 @@
                     <td>{{ product.description }}</td>
                     <td>{{ product.weight }}</td>
                     <td>{{ product.price }} €</td>
-                    <td class="text-center">
-                        <div class="btn-group" role="group">
-                            <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-outline-info">
-                                <i class="fa fa-eye"></i> Show
-                            </a>
-                            <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-outline-warning">
-                                <i class="fa fa-edit"></i> Edit
-                            </a>
-                            <a href="{{ path('app_product_export', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">
-                                <i class="fa fa-download"></i> Export CSV
-                            </a>
-                        </div>
-                    </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-outline-info">
+                                    <i class="fa fa-eye"></i> Show
+                                </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-outline-warning">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                            {% endif %}
+                                <a href="{{ path('app_product_export', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-download"></i> Export CSV
+                                </a>
+                            </div>
+                        </td>
                 </tr>
             {% else %}
                 <tr>
