@@ -22,6 +22,15 @@ class Product
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Type = null;
+
+    #[ORM\Column]
+    private ?float $Weight = null;
+
+    #[ORM\Column]
+    private ?int $Stock = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +68,42 @@ class Product
     public function setPrice(float $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->Type;
+    }
+
+    public function setType(string $Type): static
+    {
+        $this->Type = $Type;
+
+        return $this;
+    }
+
+    public function getWeight(): ?float
+    {
+        return $this->Weight;
+    }
+
+    public function setWeight(float $Weight): static
+    {
+        $this->Weight = $Weight;
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->Stock;
+    }
+
+    public function setStock(int $Stock): static
+    {
+        $this->Stock = $Stock;
 
         return $this;
     }

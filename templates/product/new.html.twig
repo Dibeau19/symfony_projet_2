@@ -1,11 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}Nouveau Livre{% endblock %}
 
 {% block body %}
-    <h1>Create new Product</h1>
+<div class="stepper">
+    <h3>Étape {{ current_step }} sur {{ total_steps }} : {{ step_label }}</h3>
+</div>
 
-    {{ include('product/_form.html.twig') }}
+{{ form_start(form) }}
+    
+    {% if current_step == 4 %}
+        <div class="summary-box" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+            <h4>Vérifiez les informations avant de valider :</h4>
+            <ul>
+                <li><strong>Type :</strong> {{ dto.type }}</li>
+                <li><strong>Titre :</strong> {{ dto.name }}</li>
+                <li><strong>Résumé :</strong> {{ dto.description }}</li>
+                <li><strong>Prix :</strong> {{ dto.price }} €</li>
+                <li><strong>Poids :</strong> {{ dto.weight }} kg</li>
+                <li><strong>Stock :</strong> {{ dto.stock }} exemplaires</li>
+            </ul>
+        </div>
+    {% endif %}
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+    {{ form_widget(form) }}
+    
+    <div class="actions" style="margin-top: 20px;">
+        {% if current_step > 1 %}
+            <button type="submit" name="previous" value="1" class="btn btn-secondary" formnovalidate>Précédent</button>
+        {% endif %}
+        
+        {% if current_step < total_steps %}
+            <button type="submit" class="btn btn-primary">Suivant</button>
+        {% else %}
+            <button type="submit" class="btn btn-success">Confirmer et Créer le livre</button>
+        {% endif %}
+    </div>
+
+{{ form_end(form) }}
 {% endblock %}
