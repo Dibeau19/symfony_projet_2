@@ -48,7 +48,7 @@ class ImportProductsCommand extends Command
                 $product->setName($data[1]);
                 $product->setDescription($data[2]);
                 $product->setWeight($data[3]);
-                $product->setStock($data[4]); // Stock par défaut
+                $product->setStock($data[4]);
                 $product->setPrice((float) $data[5]); 
 
                 $this->entityManager->persist($product);
